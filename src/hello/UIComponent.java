@@ -1,10 +1,9 @@
 package hello;
+
 import java.util.Scanner;
 
 public class UIComponent {
-
 	private Scanner scanner;
-
 	private Cities cities;
 
 	public UIComponent() {
@@ -94,5 +93,4 @@ public class UIComponent {
 	private int fromStringToIntAnswer(String input) throws NumberFormatException {
 		return Integer.parseInt(input);
 	}
-
 }
