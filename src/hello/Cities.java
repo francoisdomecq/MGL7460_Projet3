@@ -1,6 +1,6 @@
 package hello;
-public class Cities {
 
+public class Cities {
 	private String[] cities;
 
 	public Cities() {
