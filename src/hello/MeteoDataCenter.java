@@ -1,13 +1,12 @@
 package hello;
+
 import java.net.URL;
 import java.util.Scanner;
 import java.net.HttpURLConnection;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class MeteoDataCenter {
-
 	public City getMeteoData(String cityName) {
 		City city = new City();
 		try {
@@ -48,5 +47,4 @@ public class MeteoDataCenter {
 		}
 		return city;
 	}
-
 }
