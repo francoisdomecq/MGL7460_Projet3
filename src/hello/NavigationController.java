@@ -1,40 +1,38 @@
 package hello;
-public class NavigationController {
 
+public class NavigationController {
 	public static void main(String[] args) {
 		NavigationController navigationController = new NavigationController();
 		navigationController.setHomepage();
-
 	}
 
-	private Action[] actions = new Action[] { new Action() {
-		public void execute() {
-			setActionPage();
-		}
-	}, new Action() {
-		public void execute() {
-			setSignInPage();
-		}
-	}, new Action() {
-		public void execute() {
-			setSignUpPage();
-		}
-	}, new Action() {
-		public void execute() {
-			setQuitAction();
-		}
-	}, new Action() {
-		public void execute() {
-			setMeteoRequestPage();
-		}
-	} };
+	private Action[] actions = new Action[] { 
+		new Action() {
+			public void execute() {
+				setActionPage();
+			}
+		}, new Action() {
+			public void execute() {
+				setSignInPage();
+			}
+		}, new Action() {
+			public void execute() {
+				setSignUpPage();
+			}
+		}, new Action() {
+			public void execute() {
+				setQuitAction();
+			}
+		}, new Action() {
+			public void execute() {
+				setMeteoRequestPage();
+			}
+		} 
+	};
 
 	private UserDatabase userDatabase;
-
 	private User loggedUser;
-
 	private UIComponent uiComponent;
-
 	private MeteoDataCenter meteoDataCenter;
 
 	public NavigationController() {
@@ -69,7 +67,6 @@ public class NavigationController {
 		this.loggedUser = this.uiComponent.getSignAnswer();
 		this.userDatabase.addUser(this.loggedUser);
 		this.setHomepage();
-
 	}
 
 	private void setMeteoRequestPage() {
@@ -78,7 +75,6 @@ public class NavigationController {
 		City city = this.meteoDataCenter.getMeteoData(cityPicked);
 		this.uiComponent.showMeteoData(city);
 		this.setActionPage();
-
 	}
 
 	private void setQuitAction() {
@@ -90,5 +86,4 @@ public class NavigationController {
 	private interface Action {
 		void execute();
 	}
-
 }
