@@ -1,4 +1,5 @@
 package hello;
+
 public class City {
 	private String name;
 	private int temperature;
