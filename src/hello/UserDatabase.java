@@ -1,4 +1,5 @@
 package hello;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,17 +8,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserDatabase {
-
 	private static final String DATABASE_DIRECTORY = "jdbc:sqlite:" + System.getProperty("user.dir") + "\\db_files\\";
-
 	private static final String DATABASE_NAME = "meteoCenter.db";
-
 	private static final String CONNECTION_STRING = DATABASE_DIRECTORY + DATABASE_NAME;
 
 	private Connection connection;
-
 	private Statement statement;
-
 	private PreparedStatement preparedStatement;
 
 	public UserDatabase() {
@@ -34,7 +30,7 @@ public class UserDatabase {
 
 	private void createUserTable() {
 		String sql = "CREATE TABLE IF NOT EXISTS user (" + "id interger PRIMARY KEY, " + "login varchar(50), "
-				+ "password varchar(50), " + "role varchar(15)" + ");";
+				+ "password varchar(50)" + ");";
 		try {
 			this.statement.execute(sql);
 		} catch (SQLException e) {
@@ -99,5 +95,4 @@ public class UserDatabase {
 			System.out.println(e.getMessage());
 		}
 	}
-
 }
