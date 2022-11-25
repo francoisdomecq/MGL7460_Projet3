@@ -1,37 +1,41 @@
 package hellocucumber;
 
-
-
+import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import static org.junit.jupiter.api.Assertions.*;
 
-class IsItFriday {
-    static String isItFriday(String today) {
-        return "Friday".equals(today) ? "TGIF" : "Nope";
-    }
-}
+import hello.User;
+import hello.UserDatabase;
 
 public class StepDefinitions {
-    private String today;
-    private String actualAnswer;
 
-    @Given("today is {string}")
-    public void today_is(String today) {
-        this.today = today;
-    }
+	private Boolean canUserConnect;
+	private String login;
+	private User user;
+	private UserDatabase userDatabase;
+	
+	@Given("user login is {string}")
+	public void user_login_is(String login) {
+		this.login = login;	
+		this.userDatabase = new UserDatabase();
+	}
 
-    @When("I ask whether it's Friday yet")
-    public void i_ask_whether_it_s_Friday_yet() {
-        actualAnswer = IsItFriday.isItFriday(today);
-    }
+	@And("user password is {string}")
+	public void user_password_is(String password) {
+		this.user = new User(this.login, password);
+	}
 
-    @Then("I should be told {string}")
-    public void i_should_be_told(String expectedAnswer) {
-        assertEquals(expectedAnswer, actualAnswer);
-    }
+	@When("I ask whether user can access to meteo data center")
+	public void can_user_connect() {
+		this.canUserConnect = this.userDatabase.isUserCorrect(this.user);
+	}
 
-    
+	@Then("I should be told {string}")
+	public void i_should_be_told(String expectedAnswer) {
+		assertEquals(expectedAnswer, this.canUserConnect.toString());
+	}
 
 }

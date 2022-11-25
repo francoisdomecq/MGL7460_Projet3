@@ -60,8 +60,14 @@ public class UserDatabase {
 	public boolean isUserCorrect(User toVerify) {
 		User findedUser = this.getUserByLogin(toVerify.getLogin());
 		boolean isUserFound = findedUser != null;
-		boolean isLoginCorrect = toVerify.getLogin().equals(findedUser.getLogin());
-		boolean isPasswordCorrect = toVerify.getPassword().equals(findedUser.getPassword());
+		boolean isLoginCorrect = false;
+		boolean isPasswordCorrect = false;
+		if (isUserFound) {
+			isLoginCorrect = toVerify.getLogin().equals(findedUser.getLogin());
+			isPasswordCorrect = toVerify.getPassword().equals(findedUser.getPassword());
+		}
+		else
+			System.out.println("Incorrect user, please check login or password");
 		return isUserFound && isLoginCorrect && isPasswordCorrect;
 	}
 
