@@ -37,8 +37,10 @@ public class MeteoDataCenter {
 				JSONObject weather = (JSONObject) object.get("current");
 
 				int temperature = Integer.parseInt(weather.get("temperature").toString());
+				int feelsLike = Integer.parseInt(weather.get("feelslike").toString());
+				String weatherDescription = String.valueOf(weather.get("weather_descriptions"));
 
-				city = new City(cityName, temperature);
+				city = new City(cityName, temperature, feelsLike, weatherDescription);
 
 				return city;
 			}
